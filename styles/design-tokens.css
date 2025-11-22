@@ -114,6 +114,9 @@
 /* helper to make sure content sits above ribbon */
 .ribbon-container { position: relative; z-index: 10; }
 
+/* wrapper utility used in markup */
+.ribbon-wrapper { position: relative; overflow: visible; }
+
 /* halo behind logo to improve contrast */
 .logo-halo {
   background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.9), rgba(255,255,255,0.6) 35%, transparent 60%);

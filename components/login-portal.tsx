@@ -37,7 +37,7 @@ export default function LoginPortal({ onLogin }: LoginPortalProps) {
     <div className="min-h-screen bg-background flex items-center justify-center p-6">
       <div className="w-full max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center ribbon-wrapper">
         {/* Gradient ribbon (behind content) */}
-        <div aria-hidden className="gradient-ribbon">
+        <div aria-hidden className="gradient-ribbon" />
           <svg width="100%" height="100%" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="g1" x1="0%" x2="100%" y1="0%" y2="0%">
@@ -51,10 +51,10 @@ export default function LoginPortal({ onLogin }: LoginPortalProps) {
           </svg>
         </div>
         {/* Left: Branding / Illustration */}
-        <div className="hidden md:flex flex-col items-start gap-6 p-8 bg-transparent rounded-2xl">
+        <div className="hidden md:flex flex-col items-start gap-6 p-8 bg-transparent rounded-2xl z-20">
           <div className="flex items-center gap-3">
             <div className="p-3 logo-halo rounded-lg">
-              <BookOpen className="w-7 h-7 text-warm-800" />
+              <BookOpen className="w-7 h-7" style={{ color: 'var(--color-warm)' }} />
             </div>
             <div>
               <h2 className="text-2xl font-semibold text-foreground">Welcome to Academic Portal</h2>
@@ -72,7 +72,7 @@ export default function LoginPortal({ onLogin }: LoginPortalProps) {
         </div>
 
         {/* Right: Card */}
-        <div className="bg-white rounded-2xl p-8 shadow-md theme-shadow border border-gray-100">
+        <div className="bg-white rounded-2xl p-8 shadow-md theme-shadow border border-gray-100 relative z-30 ribbon-container">
         {}
           <div className="text-center mb-6 animate-fade-up" style={{ animationDelay: '60ms' }}>
             <div className="flex justify-center mb-4">
