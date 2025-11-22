@@ -11,8 +11,12 @@ import {
   ScatterChart,
   Scatter,
 } from "recharts"
-import { Users, BookOpen, TrendingUp, CheckCircle2, LogOut } from "lucide-react"
+import { useState } from "react"
+import { Users, BookOpen, TrendingUp, CheckCircle2, LogOut, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import MarkAttendance from "@/components/teacher/mark-attendance"
+import UploadMarks from "@/components/teacher/upload-marks"
+import ClassPerformance from "@/components/teacher/class-performance"
 
 const classPerformance = [
   { class: "CS-101", students: 45, avgGrade: 78 },
@@ -36,27 +40,16 @@ interface TeacherDashboardProps {
 }
 
 export default function ModernTeacherDashboard({ userName, onLogout }: TeacherDashboardProps) {
-  const handleCardAction = (label: string) => {
-    // Map card label to likely heading text
-    const map: Record<string, string> = {
-      "Mark Attendance": "Your Classes",
-      "Upload Marks": "Class Performance",
-      "View Performance": "Class Performance",
-      "Verify Results": "Your Classes",
-    }
-    const target = map[label] || label
-    try {
-      const candidates = Array.from(document.querySelectorAll("h2, h3, h4"))
-      const el = candidates.find((e) => e.textContent && e.textContent.includes(target)) as HTMLElement | undefined
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "center" })
-        return
-      }
-    } catch (e) {
-      console.error(e)
-    }
-    alert(`${label} — section not found on this page.`)
+  const [panel, setPanel] = useState<"cards" | "attendance" | "marks" | "performance" | "verify">("cards")
+
+  const openPanelForLabel = (label: string) => {
+    if (label === "Mark Attendance") setPanel("attendance")
+    else if (label === "Upload Marks") setPanel("marks")
+    else if (label === "View Performance") setPanel("performance")
+    else if (label === "Verify Results") setPanel("verify")
+    else setPanel("cards")
   }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-background">
       <div className="relative overflow-hidden">
@@ -88,7 +81,7 @@ export default function ModernTeacherDashboard({ userName, onLogout }: TeacherDa
             { icon: TrendingUp, label: "View Performance", color: "from-accent to-primary" },
             { icon: CheckCircle2, label: "Verify Results", color: "from-purple-500 to-pink-500" },
           ].map(({ icon: Icon, label, color }, i) => (
-            <button key={i} onClick={() => handleCardAction(label)} className={`glass rounded-xl p-6 group hover:border-white/20 transition-all`}>
+            <button key={i} onClick={() => openPanelForLabel(label)} className={`glass rounded-xl p-6 group hover:border-white/20 transition-all`}>
               <div
                 className={`w-12 h-12 rounded-lg bg-gradient-to-br ${color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}
               >
@@ -100,6 +93,24 @@ export default function ModernTeacherDashboard({ userName, onLogout }: TeacherDa
             </button>
           ))}
         </div>
+
+        {panel !== "cards" && (
+          <div className="mt-6">
+            <button onClick={() => setPanel("cards")} className="text-sm text-primary flex items-center gap-2 mb-4">
+              <ArrowLeft className="w-4 h-4" /> Back to overview
+            </button>
+          </div>
+        )}
+
+        {panel === "attendance" && <MarkAttendance />}
+        {panel === "marks" && <UploadMarks />}
+        {panel === "performance" && <ClassPerformance />}
+        {panel === "verify" && (
+          <div className="glass rounded-2xl p-8">
+            <h3 className="text-lg font-bold text-foreground mb-4">Verify Results</h3>
+            <p className="text-muted-foreground">Use the Verify Results panel to confirm result integrity and publish approvals. (Placeholder)</p>
+          </div>
+        )}
 
         {}
         <div className="grid md:grid-cols-3 gap-6">
