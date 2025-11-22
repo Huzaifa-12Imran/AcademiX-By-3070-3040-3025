@@ -50,15 +50,129 @@
   }
 }
 
-/* dark mode overrides (keeps the warm/cool balance but darker surfaces) */
+/* dark mode overrides - ensures high contrast for dark theme */
 .dark {
   --color-bg: #0b0f13;
   --color-surface: #071021;
   --color-muted: #9AA3B2;
-  --color-text: #E6EEF8;
+  --color-text: #F0F4F8;
+  --color-warm: #FF8B5F;
+  --color-cool: #3B9EFF;
 }
 
 /* Utility tokens for components */
 .theme-shadow {
   box-shadow: var(--surface-elev-2);
+}
+
+/* small entrance animation used by login cards */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation-name: fadeUp;
+  animation-duration: var(--motion-medium);
+  animation-timing-function: var(--motion-ease);
+  animation-fill-mode: both;
+}
+
+/* subtle hover lift used on role cards */
+.card-hover {
+  transition: transform var(--motion-fast) var(--motion-ease), box-shadow var(--motion-fast) var(--motion-ease);
+}
+.card-hover:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 10px 30px rgba(16,24,40,0.08);
+}
+
+/* Gradient ribbon / wave */
+@keyframes ribbonDrift {
+  0% { transform: translateX(-20%) rotate(-6deg) scale(1); }
+  50% { transform: translateX(10%) rotate(-4deg) scale(1.02); }
+  100% { transform: translateX(-20%) rotate(-6deg) scale(1); }
+}
+
+.gradient-ribbon {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 140%;
+  height: 480px;
+  transform: translateX(-50%) rotate(-6deg);
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: multiply;
+  filter: blur(18px) saturate(140%);
+  opacity: 0.45;
+  animation: ribbonDrift calc(var(--motion-medium) * 1.4) var(--motion-ease) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-ribbon { animation: none; }
+}
+
+/* helper to make sure content sits above ribbon */
+.ribbon-container { position: relative; z-index: 10; }
+
+/* wrapper utility used in markup */
+.ribbon-wrapper { position: relative; overflow: visible; }
+
+/* halo behind logo to improve contrast */
+.logo-halo {
+  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.9), rgba(255,255,255,0.6) 35%, transparent 60%);
+  border-radius: 12px;
+}
+
+/* Particles effect */
+@keyframes particleDrift {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.95; }
+  50% { transform: translateY(-18px) translateX(12px) scale(1.05); opacity: 0.6; }
+  100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.95; }
+}
+
+.particles {
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  width: 140%;
+  height: 420px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: normal;
+  filter: blur(6px) saturate(120%);
+  opacity: 0.85;
+}
+
+.particles svg { width: 100%; height: 100%; }
+
+.particles circle {
+  transform-origin: center;
+  animation: particleDrift 9s var(--motion-ease) infinite;
+}
+
+.particles circle:nth-child(1) { animation-delay: 0s; }
+.particles circle:nth-child(2) { animation-delay: 1.2s; }
+.particles circle:nth-child(3) { animation-delay: 2.4s; }
+.particles circle:nth-child(4) { animation-delay: 3.6s; }
+.particles circle:nth-child(5) { animation-delay: 4.8s; }
+.particles circle:nth-child(6) { animation-delay: 6s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .particles { animation: none; }
+  .particles circle { animation: none; }
+}
+
+/* Dot field: many small black dots on light backgrounds */
+@keyframes dotDrift {
+  0% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-6px) translateX(4px); }
+  100% { transform: translateY(0px) translateX(0px); }
+}
+
+.dot-field {
+  /* Dot background disabled — plain background restored */
+  display: none !important;
 }
