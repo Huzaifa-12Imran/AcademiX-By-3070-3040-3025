@@ -95,16 +95,16 @@
 .gradient-ribbon {
   position: absolute;
   left: 50%;
-  top: 48%;
+  top: 42%;
   width: 140%;
-  height: 380px;
+  height: 480px;
   transform: translateX(-50%) rotate(-6deg);
   pointer-events: none;
   z-index: 0;
-  mix-blend-mode: normal;
-  filter: blur(28px) saturate(120%);
-  opacity: 0.95;
-  animation: ribbonDrift var(--motion-medium) var(--motion-ease) infinite;
+  mix-blend-mode: multiply;
+  filter: blur(18px) saturate(140%);
+  opacity: 0.45;
+  animation: ribbonDrift calc(var(--motion-medium) * 1.4) var(--motion-ease) infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
