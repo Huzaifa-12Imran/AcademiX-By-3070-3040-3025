@@ -84,3 +84,38 @@
   transform: translateY(-6px) scale(1.01);
   box-shadow: 0 10px 30px rgba(16,24,40,0.08);
 }
+
+/* Gradient ribbon / wave */
+@keyframes ribbonDrift {
+  0% { transform: translateX(-20%) rotate(-6deg) scale(1); }
+  50% { transform: translateX(10%) rotate(-4deg) scale(1.02); }
+  100% { transform: translateX(-20%) rotate(-6deg) scale(1); }
+}
+
+.gradient-ribbon {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: 140%;
+  height: 380px;
+  transform: translateX(-50%) rotate(-6deg);
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: normal;
+  filter: blur(28px) saturate(120%);
+  opacity: 0.95;
+  animation: ribbonDrift var(--motion-medium) var(--motion-ease) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-ribbon { animation: none; }
+}
+
+/* helper to make sure content sits above ribbon */
+.ribbon-container { position: relative; z-index: 10; }
+
+/* halo behind logo to improve contrast */
+.logo-halo {
+  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.9), rgba(255,255,255,0.6) 35%, transparent 60%);
+  border-radius: 12px;
+}
