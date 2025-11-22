@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`dark ${plusJakarta.variable} ${merriweather.variable}`}>
+    <html lang="en" className={`${plusJakarta.variable} ${merriweather.variable}`}>
       <body className={`antialiased bg-background text-foreground`}>
         {children}
         <Analytics />
