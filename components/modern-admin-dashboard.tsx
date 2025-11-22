@@ -1,5 +1,6 @@
 "use client"
 
+import React, { useState } from "react"
 import {
   LineChart,
   Line,
@@ -14,6 +15,9 @@ import {
 } from "recharts"
 import { Users, Zap, TrendingUp, AlertTriangle, LogOut, Settings } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import UserManagement from "./admin/user-management"
+import CourseManagement from "./admin/course-management"
+import SystemReports from "./admin/system-reports"
 
 const systemMetrics = [
   { month: "Jan", users: 250, activeUsers: 200 },
@@ -36,6 +40,11 @@ interface AdminDashboardProps {
 }
 
 export default function ModernAdminDashboard({ userName, onLogout }: AdminDashboardProps) {
+  const [modal, setModal] = useState<string | null>(null)
+
+  const openModal = (m: string) => setModal(m)
+  const closeModal = () => setModal(null)
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-background">
       <div className="relative overflow-hidden">
