@@ -36,27 +36,8 @@ export default function LoginPortal({ onLogin }: LoginPortalProps) {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-6">
       <div className="w-full max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center ribbon-wrapper">
-        {/* Particles background (behind content) */}
-        <div aria-hidden className="particles">
-          <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="p1" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#2B8AF7" stopOpacity="0.18" />
-                <stop offset="100%" stopColor="#2B8AF7" stopOpacity="0" />
-              </radialGradient>
-              <radialGradient id="p2" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#D86A49" stopOpacity="0.12" />
-                <stop offset="100%" stopColor="#D86A49" stopOpacity="0" />
-              </radialGradient>
-            </defs>
-            <circle cx="200" cy="120" r="36" fill="url(#p1)" />
-            <circle cx="420" cy="80" r="28" fill="url(#p2)" />
-            <circle cx="640" cy="140" r="44" fill="url(#p1)" />
-            <circle cx="860" cy="110" r="30" fill="url(#p2)" />
-            <circle cx="1040" cy="150" r="22" fill="url(#p1)" />
-            <circle cx="520" cy="40" r="18" fill="url(#p2)" />
-          </svg>
-        </div>
+        {/* Dot field background (behind content) */}
+        <div aria-hidden className="dot-field" />
         {/* Left: Branding / Illustration */}
         <div className="hidden md:flex flex-col items-start gap-6 p-8 bg-transparent rounded-2xl z-20">
           <div className="flex items-center gap-3">

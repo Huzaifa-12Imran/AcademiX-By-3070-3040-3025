@@ -23,27 +23,8 @@ export default function ModernLogin({ onLogin }: ModernLoginProps) {
   if (!selectedRole) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-background overflow-hidden relative ribbon-wrapper">
-        {/* Particles background (behind content) */}
-        <div aria-hidden className="particles">
-          <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="pm1" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#2B8AF7" stopOpacity="0.16" />
-                <stop offset="100%" stopColor="#2B8AF7" stopOpacity="0" />
-              </radialGradient>
-              <radialGradient id="pm2" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#D86A49" stopOpacity="0.12" />
-                <stop offset="100%" stopColor="#D86A49" stopOpacity="0" />
-              </radialGradient>
-            </defs>
-            <circle cx="220" cy="110" r="34" fill="url(#pm1)" />
-            <circle cx="430" cy="70" r="26" fill="url(#pm2)" />
-            <circle cx="655" cy="150" r="40" fill="url(#pm1)" />
-            <circle cx="880" cy="120" r="28" fill="url(#pm2)" />
-            <circle cx="1030" cy="160" r="20" fill="url(#pm1)" />
-            <circle cx="520" cy="50" r="16" fill="url(#pm2)" />
-          </svg>
-        </div>
+        {/* Dot field background (behind content) */}
+        <div aria-hidden className="dot-field" />
 
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/20 rounded-full blur-3xl animate-pulse" />
