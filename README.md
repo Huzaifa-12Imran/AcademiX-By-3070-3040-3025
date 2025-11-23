@@ -26,6 +26,7 @@ A modern, full-featured student attendance management system built with Next.js 
 
 ## Tech Stack
 
+### Frontend
 - **Frontend Framework**: Next.js 16.0.3
 - **React**: 19.2.0
 - **Styling**: Tailwind CSS 4.1.9
@@ -36,6 +37,10 @@ A modern, full-featured student attendance management system built with Next.js 
 - **Icons**: Lucide React
 - **Date Handling**: date-fns
 - **Type Safety**: TypeScript
+
+### Backend
+- **Database**: MongoDB
+- **Runtime**: Node.js
 
 ## Installation
 
